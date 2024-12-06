@@ -3,6 +3,7 @@ from tkinter import messagebox, scrolledtext
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib.pyplot as plt
 import numpy as np
+from PIL import Image, ImageTk  # Thư viện xử lý hình ảnh
 
 current_canvas = None  # Biến lưu trạng thái đồ thị
 
@@ -122,29 +123,41 @@ root = tk.Tk()
 root.title("Giải phương trình và vẽ đồ thị")
 
 # Đặt icon
-root.iconbitmap("main\\icon.ico")  # Thay "icon.ico" bằng đường dẫn icon của bạn
+try:
+    root.iconbitmap("icon.ico")  # Thay "icon.ico" bằng đường dẫn icon của bạn
+except Exception as e:
+    print(f"Không thể mở icon: {e}")
 
-# Phương trình bậc nhất
-frame_bac_nhat = tk.Frame(root)
+# Đặt hình nền
+try:
+    bg_image = Image.open("background.jpg")  # Thay "background.jpg" bằng ảnh nền của bạn
+    bg_photo = ImageTk.PhotoImage(bg_image)
+    bg_label = tk.Label(root, image=bg_photo)
+    bg_label.place(relwidth=1, relheight=1)
+except Exception as e:
+    print(f"Không thể mở hình nền: {e}")
+
+# Khung và widget cho giao diện
+frame_bac_nhat = tk.Frame(root, bg="#ffffff")
 frame_bac_nhat.pack(pady=10)
 
-tk.Label(frame_bac_nhat, text="Giải phương trình bậc nhất: ax + b = 0").pack()
-tk.Label(frame_bac_nhat, text="Nhập a:").pack(side=tk.LEFT)
+tk.Label(frame_bac_nhat, text="Giải phương trình bậc nhất: ax + b = 0", bg="#ffffff").pack()
+tk.Label(frame_bac_nhat, text="Nhập a:", bg="#ffffff").pack(side=tk.LEFT)
 entry_a = tk.Entry(frame_bac_nhat)
 entry_a.pack(side=tk.LEFT)
 
-tk.Label(frame_bac_nhat, text="Nhập b:").pack(side=tk.LEFT)
+tk.Label(frame_bac_nhat, text="Nhập b:", bg="#ffffff").pack(side=tk.LEFT)
 entry_b = tk.Entry(frame_bac_nhat)
 entry_b.pack(side=tk.LEFT)
 
 btn_bac_nhat = tk.Button(frame_bac_nhat, text="Giải", command=giai_bac_nhat)
 btn_bac_nhat.pack(side=tk.LEFT, padx=10)
 
-# Phương trình bậc hai
-frame_bac_hai = tk.Frame(root)
-frame_bac_hai.pack(pady=20)
+# Khung và widget cho giao diện phương trình bậc 2
+frame_bac_hai = tk.Frame(root, bg="#ffffff")
+frame_bac_hai.pack(pady=10)
 
-tk.Label(frame_bac_hai, text="Giải phương trình bậc hai: ax² + bx + c = 0").pack()
+tk.Label(frame_bac_hai, text="Giải phương trình bậc hai: ax² + bx + c = 0", bg="#ffffff").pack()
 tk.Label(frame_bac_hai, text="Nhập a:").pack(side=tk.LEFT)
 entry_a2 = tk.Entry(frame_bac_hai)
 entry_a2.pack(side=tk.LEFT)
@@ -160,13 +173,11 @@ entry_c2.pack(side=tk.LEFT)
 btn_bac_hai = tk.Button(frame_bac_hai, text="Giải", command=giai_bac_hai)
 btn_bac_hai.pack(side=tk.LEFT, padx=10)
 
-# Khung hiển thị lời giải
-frame_solution = tk.Frame(root, background="green")
+frame_solution = tk.Frame(root, bg="#ffffff")
 frame_solution.pack(pady=10)
 
-tk.Label(frame_solution, text="Lời giải chi tiết:").pack()
+tk.Label(frame_solution, text="Lời giải chi tiết:", bg="#ffffff").pack()
 text_output = scrolledtext.ScrolledText(frame_solution, width=60, height=10, wrap=tk.WORD)
 text_output.pack()
 
-# Chạy ứng dụng
 root.mainloop()
