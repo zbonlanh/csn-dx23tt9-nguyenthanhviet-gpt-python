@@ -92,7 +92,7 @@ def solve_linear():
         solution_text.insert(tk.END, "Giải:\n")
         solution_text.insert(tk.END, f"Bước 1: Chuyển vế đổi dấu {a}x = {-b}\n")
         solution_text.insert(tk.END, f"Bước 2: Tính x = {-b} / {a}\n")
-        solution_text.insert(tk.END, f"Vậy: x = {x}\n")
+        solution_text.insert(tk.END, f"Đáp án: x = {x}\n")
     
         # Vẽ đồ thị
         plot_graph(a, b)
@@ -129,17 +129,17 @@ def solve_quadratic():
             solution_text.insert(tk.END, "Bước 2: Do Δ > 0 nên phương trình có 2 nghiệm phân biệt.\n")
             solution_text.insert(tk.END, f"Nghiệm 1: x₁ = (-{b} + √{delta}) / (2×{a}) = {x1}\n")
             solution_text.insert(tk.END, f"Nghiệm 2: x₂ = (-{b} - √{delta}) / (2×{a}) = {x2}\n")
-            solution_text.insert(tk.END, f"Giải: x₁ = {x1}, x₂ = {x2}\n")
+            solution_text.insert(tk.END, f"Đáp án: x₁ = {x1}, x₂ = {x2}\n")
         elif delta == 0:
             # Một nghiệm kép
             x = -b / (2 * a)
             solution_text.insert(tk.END, "Bước 2: Phương trình có 1 nghiệm kép.\n")
             solution_text.insert(tk.END, f"Nghiệm: x = {-b} / (2×{a}) = {x}\n")
-            solution_text.insert(tk.END, f"Giải: x = {x}\n")
+            solution_text.insert(tk.END, f"Đáp án: x = {x}\n")
         else:
             # Vô nghiệm
             solution_text.insert(tk.END, "Bước 2: Phương trình vô nghiệm trong tập số thực.\n")
-            solution_text.insert(tk.END, "Giải: Vô nghiệm\n")
+            solution_text.insert(tk.END, "Đáp án: Vô nghiệm\n")
     
         # Vẽ đồ thị
         plot_graph(a, b, c)
