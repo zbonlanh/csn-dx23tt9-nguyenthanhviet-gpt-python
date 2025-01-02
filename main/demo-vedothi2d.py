@@ -133,9 +133,9 @@ def solve_quadratic():
         elif delta == 0:
             # Một nghiệm kép
             x = -b / (2 * a)
-            solution_text.insert(tk.END, "Bước 2: Phương trình có 1 nghiệm kép.\n")
-            solution_text.insert(tk.END, f"Nghiệm: x = {-b} / (2×{a}) = {x}\n")
-            solution_text.insert(tk.END, f"Đáp án: x = {x}\n")
+            solution_text.insert(tk.END, "Bước 2: Phương trình có nghiệm kép.\n")
+            solution_text.insert(tk.END, f"Nghiệm: x₁ = x₂ {-b} / (2×{a}) = {x}\n")
+            solution_text.insert(tk.END, f"Đáp án: x₁ = x₂ = {x}\n")
         else:
             # Vô nghiệm
             solution_text.insert(tk.END, "Bước 2: Phương trình vô nghiệm trong tập số thực.\n")
